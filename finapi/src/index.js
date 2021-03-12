@@ -80,6 +80,14 @@ app.post('/deposit', (request, response) => {
   return response.status(201).send();
 });
 
+app.get('/balance', (request, response) => {
+  const { customer } = request;
+
+  const balance = getBalance(customer.statement);
+
+  return response.status(200).json(balance);
+});
+
 app.post('/withdraw', (request, response) => {
   const { amount } = request.body;
 
@@ -100,6 +108,44 @@ app.post('/withdraw', (request, response) => {
   customer.statement.push(statementOperation);
 
   return response.status(201).send();
+});
+
+app.get('/statement/date', (request, response) => {
+  const { customer } = request;
+  const { date } = request.query;
+
+  const dateFormat = new Date(date + ' 00:00');
+
+  const statement = customer.statement.filter(
+    (statement) =>
+      statement.created_at.toDateString() === new Date(dateFormat).toDateString
+  );
+
+  return response.status(200).json(customer.statement);
+});
+
+app.put('/account', (request, response) => {
+  const { name } = request.body;
+  const { customer } = request;
+
+  customer.name = name;
+
+  return response.status(201).send();
+});
+
+app.get('/account', (request, response) => {
+  const { customer } = request;
+
+  return response.status(200).json(customer);
+});
+
+app.delete('/account', (request, response) => {
+  const { customer } = request;
+
+  const index = customers.findIndex((element) => element === customer);
+  customers.splice(index, 1);
+
+  return response.status(200).json(customers);
 });
 
 app.listen(3333);
