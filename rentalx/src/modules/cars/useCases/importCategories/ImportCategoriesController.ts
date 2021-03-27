@@ -1,16 +1,25 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 
 import { ImportCategoriesUseCase } from './ImportCategoriesUseCase';
 
 class ImportCategoriesController {
-  constructor(private importCategoriesUseCase: ImportCategoriesUseCase) {}
+  async handle(request: Request, response: Response): Promise<Response> {
+    try {
+      const { file } = request;
 
-  handle(request: Request, response: Response): Response {
-    const { file } = request;
+      const importCategoriesUseCase = container.resolve(
+        ImportCategoriesUseCase,
+      );
 
-    this.importCategoriesUseCase.execute(file);
+      await importCategoriesUseCase.execute(file);
 
-    return response.send();
+      return response.status(201).send();
+    } catch {
+      return response
+        .status(400)
+        .json({ error: 'Could not import categories.' });
+    }
   }
 }
 
