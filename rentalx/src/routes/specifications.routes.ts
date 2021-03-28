@@ -6,9 +6,9 @@ import { ListSpecificationsController } from '../modules/cars/useCases/listSpeci
 const specificationsRoutes = Router();
 
 const createSpecificationController = new CreateSpecificationController();
-specificationsRoutes.post('/', createSpecificationController.handle);
-
 const listSpecificationsController = new ListSpecificationsController();
+
+specificationsRoutes.post('/', createSpecificationController.handle);
 specificationsRoutes.get('/', listSpecificationsController.handle);
 
 export { specificationsRoutes };

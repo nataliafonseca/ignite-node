@@ -14,3 +14,8 @@ Repositório criado para armazenamento do código das aulas da trilha NodeJS do 
 
 - [Desafio 01 - Introdução ao SOLID](https://github.com/nataliafonseca/ignite-node-c2-d01)
 - [Desafio 02 - Documentando com Swagger](https://github.com/nataliafonseca/ignite-node-c2-d02)
+
+### Capítulo III
+
+- [Desafio 01 - Database Queries](https://github.com/nataliafonseca/ignite-node-c3-d01)
+- [Desafio 02 - Modelagem do banco de dados](https://github.com/nataliafonseca/ignite-node-c3-d02)

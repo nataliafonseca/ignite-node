@@ -27,8 +27,8 @@
           "201": {
             "description": "Created"
           },
-          "500": {
-            "description": "Category Already Exists"
+          "400": {
+            "description": "Error"
           }
         }
       },
@@ -104,8 +104,8 @@
           "201": {
             "description": "Created"
           },
-          "500": {
-            "description": "Specification Already Exists"
+          "400": {
+            "description": "Error"
           }
         }
       },
@@ -140,6 +140,109 @@
           }
         }
       }
+    },
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create an user",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Error"
+          }
+        }
+      }
+    },
+    "/users/avatar": {
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": ["Users"],
+        "summary": "Updates an user avatar",
+        "description": "Updates an user avatar",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Error"
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Authenticate a user",
+        "description": "Authenticate a user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "Password Sample"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Enter JWT token.",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
   },
   "definitions": {
@@ -166,6 +269,27 @@
         "description": {
           "type": "string",
           "example": "Category Description Sample"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Name Sample"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "password": {
+          "type": "string",
+          "example": "Password Sample"
+        },
+        "driver_license": {
+          "type": "string",
+          "example": "85057398900"
         }
       }
     }
