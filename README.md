@@ -19,3 +19,8 @@ Repositório criado para armazenamento do código das aulas da trilha NodeJS do 
 
 - [Desafio 01 - Database Queries](https://github.com/nataliafonseca/ignite-node-c3-d01)
 - [Desafio 02 - Modelagem do banco de dados](https://github.com/nataliafonseca/ignite-node-c3-d02)
+
+### Capítulo IV
+
+- [Desafio 01 - Testes unitários](https://github.com/nataliafonseca/ignite-node-c4-d01)
+- [Desafio 02 - Testes de integração](https://github.com/nataliafonseca/ignite-node-c4-d02)
