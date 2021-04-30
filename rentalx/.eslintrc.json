@@ -16,8 +16,7 @@
     "sourceType": "module"
   },
   "plugins": [
-    "@typescript-eslint",
-    "eslint-plugin-import-helpers"
+    "@typescript-eslint"
   ],
   "rules": {
     "camelcase": "off",
@@ -47,25 +46,6 @@
       "ignorePackages",
       {
         "ts": "never"
-      }
-    ],
-    "import-helpers/order-imports": [
-      "warn",
-      {
-        "newlinesBetween": "always",
-        "groups": [
-          "module",
-          "/^@shared/",
-          [
-            "parent",
-            "sibling",
-            "index"
-          ]
-        ],
-        "alphabetize": {
-          "order": "asc",
-          "ignoreCase": true
-        }
       }
     ],
     "import/no-extraneous-dependencies": [
