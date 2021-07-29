@@ -44,7 +44,25 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/Category"
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Category name"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Category description"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    }
                   }
                 }
               }
@@ -123,11 +141,21 @@
                   "items": {
                     "type": "object",
                     "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
                       "name": {
-                        "type": "string"
+                        "type": "string",
+                        "example": "Specification name"
                       },
                       "description": {
-                        "type": "string"
+                        "type": "string",
+                        "example": "Specification description"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time"
                       }
                     }
                   }
@@ -230,6 +258,152 @@
           },
           "400": {
             "description": "Error"
+          }
+        }
+      }
+    },
+    "/cars": {
+      "post": {
+        "tags": ["Cars"],
+        "summary": "Create a car",
+        "description": "Create a car",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Car name"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Car description"
+                  },
+                  "daily_rate": {
+                    "type": "number",
+                    "example": 200
+                  },
+                  "license_plate": {
+                    "type": "string",
+                    "example": "ABC-1234"
+                  },
+                  "fine_amount": {
+                    "type": "number",
+                    "example": 80
+                  },
+                  "brand": {
+                    "type": "string",
+                    "example": "Car brand"
+                  },
+                  "category_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Error"
+          }
+        }
+      }
+    },
+    "/cars/available": {
+      "get": {
+        "tags": ["Cars"],
+        "summary": "List available cars",
+        "description": "List available cars",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "Car name"
+          },
+          {
+            "in": "query",
+            "name": "brand",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "Car brand"
+          },
+          {
+            "in": "query",
+            "name": "category_id",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "Category ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "available": {
+                        "type": "boolean"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Car name"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Car description"
+                      },
+                      "daily_rate": {
+                        "type": "number",
+                        "example": 200
+                      },
+                      "license_plate": {
+                        "type": "string",
+                        "example": "ABC-1234"
+                      },
+                      "fine_amount": {
+                        "type": "number",
+                        "example": 80
+                      },
+                      "brand": {
+                        "type": "string",
+                        "example": "Car brand"
+                      },
+                      "category_id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
