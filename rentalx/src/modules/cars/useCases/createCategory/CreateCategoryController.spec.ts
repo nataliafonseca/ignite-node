@@ -1,6 +1,6 @@
 import { app } from '@shared/infra/http/app';
 import createConnection from '@shared/infra/typeorm';
-import { hash } from 'bcrypt';
+import { hash } from 'bcryptjs';
 import request from 'supertest';
 import { Connection } from 'typeorm';
 import { v4 as uuid } from 'uuid';
@@ -41,7 +41,7 @@ describe('Create Category Controller', () => {
     expect(response.status).toBe(201);
   });
 
-  it('shoud not be able to create a second category with the same name', async () => {
+  it('should not be able to create a second category with the same name', async () => {
     const token = await request(app)
       .post('/sessions')
       .send({ email: 'admin@rentalx.com.br', password: 'admin' })
