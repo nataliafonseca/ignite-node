@@ -9,7 +9,7 @@ import multer from 'multer';
 
 const categoriesRoutes = Router();
 
-const uploadFile = multer(uploadConfig.upload('./tmp'));
+const uploadFile = multer(uploadConfig);
 
 const createCategoryController = new CreateCategoryController();
 const listCategoriesController = new ListCategoriesController();

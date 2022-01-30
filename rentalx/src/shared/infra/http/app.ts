@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import '@shared/container';
 import { handleErrors } from '@shared/infra/http/middleware/handleErrors';
 import createConnection from '@shared/infra/typeorm';
