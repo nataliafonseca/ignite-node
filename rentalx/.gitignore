@@ -134,3 +134,7 @@ tmp
 
 # ormconfig
 ormconfig.json
+
+# etc
+*.ignore
+docker-compose.yml
