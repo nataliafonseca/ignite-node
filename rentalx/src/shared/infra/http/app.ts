@@ -2,6 +2,7 @@ import 'dotenv/config';
 import upload from '@config/upload';
 import '@shared/container';
 import { handleErrors } from '@shared/infra/http/middleware/handleErrors';
+import rateLimiter from '@shared/infra/http/middleware/rateLimiter';
 import createConnection from '@shared/infra/typeorm';
 import cors from 'cors';
 import express from 'express';
@@ -14,6 +15,7 @@ createConnection();
 
 const app = express();
 
+app.use(rateLimiter);
 app.use(express.json());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use('/avatar', express.static(`${upload.tmpFolder}/avatar`));
