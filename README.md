@@ -29,3 +29,8 @@ Repositório criado para armazenamento do código das aulas da trilha NodeJS do 
 ### Capítulo V
 
 - [Desafio 01 - Transferências com a FinAPI](https://github.com/nataliafonseca/ignite-node-c5-d01)
+
+
+### Capítulo VI
+
+- [Desafio 01 - Construindo com serverless](https://github.com/nataliafonseca/ignite-node-c6-d01)
